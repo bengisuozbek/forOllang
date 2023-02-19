@@ -1,0 +1,563 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+  :host {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 14px;
+    color: #333;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 8px 0;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .spacer {
+    flex: 1;
+  }
+
+  .toolbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background-color: #1976d2;
+    color: white;
+    font-weight: 600;
+  }
+
+  .toolbar img {
+    margin: 0 16px;
+  }
+
+  .toolbar #twitter-logo {
+    height: 40px;
+    margin: 0 8px;
+  }
+
+  .toolbar #youtube-logo {
+    height: 40px;
+    margin: 0 16px;
+  }
+
+  .toolbar #twitter-logo:hover,
+  .toolbar #youtube-logo:hover {
+    opacity: 0.8;
+  }
+
+  .content {
+    display: flex;
+    margin: 82px auto 32px;
+    padding: 0 16px;
+    max-width: 960px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  svg.material-icons {
+    height: 24px;
+    width: auto;
+  }
+
+  svg.material-icons:not(:last-child) {
+    margin-right: 8px;
+  }
+
+  .card svg.material-icons path {
+    fill: #888;
+  }
+
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 16px;
+  }
+
+  .card {
+    all: unset;
+    border-radius: 4px;
+    border: 1px solid #eee;
+    background-color: #fafafa;
+    height: 40px;
+    width: 200px;
+    margin: 0 8px 16px;
+    padding: 16px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+    line-height: 24px;
+  }
+
+  .card-container .card:not(:last-child) {
+    margin-right: 0;
+  }
+
+  .card.card-small {
+    height: 16px;
+    width: 168px;
+  }
+
+  .card-container .card:not(.highlight-card) {
+    cursor: pointer;
+  }
+
+  .card-container .card:not(.highlight-card):hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
+  }
+
+  .card-container .card:not(.highlight-card):hover .material-icons path {
+    fill: rgb(105, 103, 103);
+  }
+
+  .card.highlight-card {
+    background-color: #1976d2;
+    color: white;
+    font-weight: 600;
+    border: none;
+    width: auto;
+    min-width: 30%;
+    position: relative;
+  }
+
+  .card.card.highlight-card span {
+    margin-left: 60px;
+  }
+
+  svg#rocket {
+    width: 80px;
+    position: absolute;
+    left: -10px;
+    top: -24px;
+  }
+
+  svg#rocket-smoke {
+    height: calc(100vh - 95px);
+    position: absolute;
+    top: 10px;
+    right: 180px;
+    z-index: -10;
+  }
+
+  a,
+  a:visited,
+  a:hover {
+    color: #1976d2;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: #125699;
+  }
+
+  .terminal {
+    position: relative;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 6px;
+    padding-top: 45px;
+    margin-top: 8px;
+    overflow: hidden;
+    background-color: rgb(15, 15, 16);
+  }
+
+  .terminal::before {
+    content: "\2022 \2022 \2022";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 4px;
+    background: rgb(58, 58, 58);
+    color: #c2c3c4;
+    width: 100%;
+    font-size: 2rem;
+    line-height: 0;
+    padding: 14px 0;
+    text-indent: 4px;
+  }
+
+  .terminal pre {
+    font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+    color: white;
+    padding: 0 1rem 1rem;
+    margin: 0;
+  }
+
+  .circle-link {
+    height: 40px;
+    width: 40px;
+    border-radius: 40px;
+    margin: 8px;
+    background-color: white;
+    border: 1px solid #eeeeee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: 1s ease-out;
+  }
+
+  .circle-link:hover {
+    transform: translateY(-0.25rem);
+    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  footer {
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    line-height: 20px;
+  }
+
+  footer a {
+    display: flex;
+    align-items: center;
+  }
+
+  .github-star-badge {
+    color: #24292e;
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    padding: 3px 10px;
+    border: 1px solid rgba(27, 31, 35, .2);
+    border-radius: 3px;
+    background-image: linear-gradient(-180deg, #fafbfc, #eff3f6 90%);
+    margin-left: 4px;
+    font-weight: 600;
+  }
+
+  .github-star-badge:hover {
+    background-image: linear-gradient(-180deg, #f0f3f6, #e6ebf1 90%);
+    border-color: rgba(27, 31, 35, .35);
+    background-position: -.5em;
+  }
+
+  .github-star-badge .material-icons {
+    height: 16px;
+    width: 16px;
+    margin-right: 4px;
+  }
+
+  svg#clouds {
+    position: fixed;
+    bottom: -160px;
+    left: -230px;
+    z-index: -10;
+    width: 1920px;
+  }
+
+  /* Responsive Styles */
+  @media screen and (max-width: 767px) {
+
+    .card-container>*:not(.circle-link),
+    .terminal {
+      width: 100%;
+    }
+
+    .card:not(.highlight-card) {
+      height: 16px;
+      margin: 8px 0;
+    }
+
+    .card.highlight-card span {
+      margin-left: 72px;
+    }
+
+    svg#rocket-smoke {
+      right: 120px;
+      transform: rotate(-5deg);
+    }
+  }
+
+  @media screen and (max-width: 575px) {
+    svg#rocket-smoke {
+      display: none;
+      visibility: hidden;
+    }
+  }
+</style>
+
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+      <div class="searchbar align-items-center">
+        <div class="form">
+          <i class="bi bi-search"></i>
+          <input type="text" class="form-control form-input" placeholder="Search anything...">
+        </div>
+      </div>
+      <!-- USER PAGE INFO -->
+      <div class="user-info">
+        <div style="width: 42rem;">
+          <p style="float: left; text-align: left;">
+            <img class="rounded-full" style="padding: 10px 10px; margin-right: 10px; width: 150px; height: 150px;"
+              src="{{ profileItem.imageUrl }}" alt="user photo">
+          </p>
+
+          <h2 style="display: inline;">{{ profileItem.firstName }} {{ profileItem.lastName }}</h2>
+          
+          <button type="button" id="button-edit" class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl 
+     focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800
+     font-normal rounded-full text-sm px-4 py-2 text-center mr-2 mb-2">
+            Edit Profile
+          </button>
+          
+          <button id="button-public" class="bg-gray-300 hover:bg-gray-600 text-gray-500 font-normal py-2 px-4 rounded-full"
+            (click)="openPage('home')">
+            Public View
+          </button>
+          
+          <br>
+          <p style="float: left; text-align: left;">
+            <i class="bi bi-geo-alt-fill" aria-hidden="true" style="color: gray;"></i>
+          </p>
+          <p class="card-text" style="color: gray;">{{ profileItem.country }} , {{ profileItem.city }}</p>
+          <br>
+          
+          <p class="card-text" style="color: gray;width: 37rem;" >{{ profileItem.text }}</p> <!-- if reach the max char, control it! -->
+        </div>
+  
+        <div class="row">
+          <div class="icons">
+            <div class="column">
+              <div class="icon1">
+                <p style="float: left; text-align: left;margin-right: 1rem;">
+                  <i class="bi bi-clock" style="font-size: 2rem;" aria-hidden="true"></i>
+                </p>
+                <p style="color: #24292e;">{{ profileItem.experience }} Years Job</p>
+                <p>Experienced</p>
+              </div>
+            </div>
+  
+            <div class="column">
+              <div class="icon2" style="clear: left;">
+                <p style="float: left; text-align: left;margin-right: 1rem;">
+                  <i class="bi bi-trophy" style="font-size: 2rem;" aria-hidden="true"></i>
+                </p>
+                <p style="color: #24292e;">{{ profileItem.certificates }} Certificates</p>
+                <p>Achieved</p>
+              </div>
+            </div>
+  
+            <div class="column">
+              <div class="icon3" style="clear: left;">
+                <p style="float: left; text-align: left;margin-right: 1rem;">
+                  <i class="bi bi-file-check" style="font-size: 2rem;" aria-hidden="true"></i>
+                </p>
+                <p style="color: #24292e;">{{ profileItem.internship_number }} Internships</p>
+                <p>Completed</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topnav">
+          <a class="active" href="#home">Experience</a>
+          <a href="#">Biography</a>
+          <a href="#">Skills</a>
+          <a href="#">Portfolio</a>
+        </div>
+
+      </div>
+      <!-- END -->
+
+      <div class="card border-0" id="colcard">
+        <div class="card-body">
+          <div>
+            <h4 style="display: inline;" class="card-title">Job Experience</h4>
+            <h5 style="display: inline;padding-left: 8px;">3 Job History</h5>
+            <button type="button" id="button-add"
+              class="bg-gray-200 hover:bg-gray-300 text-gray-500 font-normal py-2 px-4 rounded-full">
+              <i class="bi bi-plus" aria-hidden="true"></i>
+              Add More
+            </button>
+            <br>
+          </div>
+          <br>
+          <div class="job">
+            <div class="icon">
+              <div class="experience-column">
+                <div class="icon1">
+                  <p style="float: left; text-align: left;">
+                    <img class="rounded-full" style="width: 20pt; height: 20pt;" src="../../../assets/images/basketball-ball.png" >
+                  </p>
+                  <p style="color: #24292e; font-size: 10pt;margin-left: 2rem;"><b>Graphic Designer</b></p>
+                  <p style="font-size: 9pt;margin-left: 2rem;">Dribble Inc</p>
+                </div>
+              </div>
+  
+              <div class="experience-column">
+                <p style="float: left; text-align: left;">
+                  <i class="bi bi-clock" aria-hidden="true"></i>
+                </p>
+                <p>Feb 2016-Dec 2017</p>
+              </div>
+  
+              <div class="experience-column">
+                <p style="float: left; text-align: left;">
+                  <i class="bi bi-geo-alt-fill" aria-hidden="true"></i>
+                </p>
+                <p>New York, USA</p>
+              </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <p class="card-text" style="color: #333; font-size: 9pt;">
+              Some quick example text to build on the card title and make up the bulk of the card's content.
+              Some quick example text to build on the card title and make up the bulk of the card's content.
+              Some quick example text to build on the card title and make up the bulk of the card's content.
+            </p>
+  
+            <p style="font-size: 9pt;"><b>Media Files(2)</b></p>
+
+            <div style="display: flex; justify-content: center;">
+              <img class="card-img-top" src="../../../assets/images/pic1.png" style="width: 35%;height: 35%;" alt="Card image cap">
+              <img class="card-img-top" src="../../../assets/images/2.jpeg" style="margin-left: 1rem;width: 31%;height: 31%;" alt="Card image cap">
+            </div>
+            
+          </div>
+          <br>
+          <hr>
+          <div class="job">
+            <br>
+            <br>
+            <div class="icon">
+              <div class="experience-column">
+                <div class="icon1">
+                  <p style="float: left; text-align: left;">
+                    <img class="rounded-full" style="width: 20pt; height: 20pt;" src="../../../assets/images/diamond.png" >
+                  </p>
+                  <p style="color: #24292e; font-size: 10pt;margin-left: 2rem;"><b>Lead Designer</b></p>
+                  <p style="font-size: 9pt;margin-left: 2rem;">Sketch App</p>
+                </div>
+              </div>
+  
+              <div class="experience-column">
+                <p style="float: left; text-align: left;">
+                  <i class="bi bi-clock" aria-hidden="true"></i>
+                </p>
+                <p>Apr 2010-Sept 2011</p>
+              </div>
+  
+              <div class="experience-column">
+                <p style="float: left; text-align: left;">
+                  <i class="bi bi-geo-alt-fill" aria-hidden="true"></i>
+                </p>
+                <p>Katmandu, Nepal</p>
+              </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <p class="card-text" style="color: #333; font-size: 9pt;">
+              Some quick example text to build on the card title and make up the bulk of the card's content.
+              Some quick example text to build on the card title and make up the bulk of the card's content.
+              Some quick example text to build on the card title and make up the bulk of the card's content.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-4">
+      <div class="user-nav flex items-center ml-64">
+        <div>
+          <a>
+            <i class="bi bi-bell"></i>
+            <!-- <span class="badge rounded-pill badge-notification bg-primary"></span> MAVİ NOKTA EKLENECEK -->
+          </a>
+        </div>
+        <div>
+          <a>
+            <button type="button"
+              class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+              aria-expanded="false" data-dropdown-toggle="dropdown-user">
+              <span class="sr-only">Open user menu</span>
+              <img class="w-8 h-8 rounded-full" src="{{ profileItem.imageUrl }}"
+                alt="user photo">
+            </button>
+          </a>
+        </div>
+        <div style="margin-left: 1px;">
+          <a href="#">
+            <span style="color: black;font-size: 8pt;">{{ profileItem.firstName }} {{ profileItem.lastName }}</span>
+          </a>
+        </div>
+        <div>
+          <a>
+            <i class="bi bi-three-dots" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+  
+      <mat-card id="procard">
+        <mat-card-header></mat-card-header>
+        <mat-card-content></mat-card-content>
+        <img mat-card-image src="../../../assets/images/trophy.png" alt="trophy photo">
+        <mat-card-content> 
+          <br>
+          <h3 style="text-align: center;">Upgrade to <b>PRO</b></h3>
+          <p style="color: gray; text-align: center;margin-top: 20px;">I am a consultant for a small hotel business. I am currently with them through 
+          a rebrand, and they are in need of a new company logo.</p>
+
+          <div class="checklist">
+            <p style="float: left; text-align: left;margin-right: 1rem;">
+              <img class="rounded-full" style="width: 12pt; height: 12pt;" src="../../../assets/images/check.png" >
+            </p>
+            <p>Unlimited Job Post.</p>
+  
+            <p style="float: left; text-align: left;margin-right: 1rem;">
+              <img class="rounded-full" style="width: 12pt; height: 12pt;" src="../../../assets/images/check.png" >
+            </p>
+            <p>Multiple job communication.</p>
+  
+            <p style="float: left; text-align: left;margin-right: 1rem;">
+              <img class="rounded-full" style="width: 12pt; height: 12pt;" src="../../../assets/images/check.png" >
+            </p>
+            <p>Unlimited calling access from different city.</p>
+  
+            <p style="float: left; text-align: left;margin-right: 1rem;">
+              <img class="rounded-full" style="width: 12pt; height: 12pt;" src="../../../assets/images/check.png" >
+            </p>
+            <p>Hire 10+ freelancers for one project.</p>
+  
+            <p style="float: left; text-align: left;margin-right: 1rem;">
+              <img class="rounded-full" style="width: 12pt; height: 12pt;" src="../../../assets/images/check.png" >
+            </p>
+            <p>Filter, block, search talent freelancers.</p>
+          </div>
+
+        </mat-card-content>
+        <mat-card-actions style="display: flex;justify-content: center;">
+          <button type="button" class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl 
+          focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800
+          font-medium rounded-full text-sm px-4 py-2 text-center mr-2 mb-2" style="margin-right: 10%;">
+           Upgrade Plan
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+
+</div>

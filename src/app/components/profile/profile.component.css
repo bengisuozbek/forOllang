@@ -1,0 +1,222 @@
+body {
+    background: rgb(99, 39, 120)
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: #BA68C8
+}
+
+.profile-button {
+    background: rgb(99, 39, 120);
+    box-shadow: none;
+    border: none
+}
+
+.profile-button:hover {
+    background: #682773
+}
+
+.profile-button:focus {
+    background: #682773;
+    box-shadow: none
+}
+
+.profile-button:active {
+    background: #682773;
+    box-shadow: none
+}
+
+.back:hover {
+    color: #682773;
+    cursor: pointer
+}
+
+.labels {
+    font-size: 11px
+}
+
+.add-experience:hover {
+    background: #BA68C8;
+    color: #fff;
+    cursor: pointer;
+    border: solid 1px #BA68C8
+}
+
+/* background */
+.container {
+    margin-left: 8rem;
+    width: 80%;
+    height: max-content;
+}
+
+/* user-info */
+.user-info {
+    margin-top: 20px;
+    float: left;
+}
+
+#button-edit {
+    margin-left: 20%;
+    font-size: 8pt;
+}
+
+#button-public {
+    float: right;
+    font-size: 8pt;
+}
+
+#button-add {
+    float: right;
+    font-size: 8pt;
+}
+
+.user-nav {
+    width: 15rem;
+    margin-top: 32px;
+    margin-left: 160px;
+    align-content: space-around;
+    gap: 10px;
+}
+
+
+#colcard {
+    margin-top: 27rem;
+    height: 10rem;
+    width: 40rem; 
+    height: auto;
+    background-color: rgb(244, 244, 244);
+}
+
+.cardcontainer {
+    float: left;
+    padding: 10px 10px;
+}
+
+#procard {
+    margin-top: 40px;
+    margin-left: 4rem;
+    width: 20rem;
+    background-color: rgb(244, 244, 244);
+    height: 35rem;
+}
+
+#procard img {
+    height: 120px; 
+    width: 120px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20%;
+} 
+
+.icons {
+    margin-top: 30px;
+    color: rgba(103, 103, 103, 0.845);
+}
+
+.icons p {
+    margin-left: 3rem;
+}
+
+/* COLUMN CARDS */
+* {
+    box-sizing: border-box;
+}
+
+/* Float four columns side by side */
+.icons .column {
+    float: left;
+    width: 32%;
+}
+
+.experience-column {
+    float: left;
+    width: 30%;
+}
+
+/* Remove extra left and right margins, due to padding in columns */
+.row {
+    margin: 0 -5px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Responsive columns - one column layout (vertical) on small screens */
+@media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+        display: block;
+        margin-bottom: 20px;
+    }
+}
+
+
+/* User Navigation Menu */
+.topnav {
+    overflow: hidden;
+    margin-top: 1rem;
+}
+
+.topnav a {
+    float: left;
+    display: block;
+    color: gray;
+    text-align: center;
+    padding: 12px 13px;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+}
+
+.topnav a:hover {
+    border-bottom: 2px solid rgb(121, 120, 120);
+}
+
+.topnav a.active {
+    color: black;
+    border-bottom: 2px solid rgb(121, 120, 120);
+}
+
+/* search bar */
+.searchbar .form{
+    position: relative;
+    margin-top: 20pt;
+}
+
+.searchbar .form .bi-search{
+    position: absolute;
+    top: 8px;
+    left: 15px;
+    color: #9ca3af;
+}
+
+.searchbar .form span{
+  position: absolute;
+  right: 17px;
+  top: 13px;
+  padding: 2px;
+  border-left: 1px solid #d1d5db;
+}
+
+.searchbar .form-input{
+    height: 30px;
+    text-indent: 33px;
+    border-radius: 10px;
+    color: #9ca3af;
+}
+
+.searchbar .form-input:focus{
+    box-shadow: none;
+    border:none;
+}
+
+.checklist {
+    color: gray;
+    font-size: 9pt;
+    margin-top: 10%;
+}
+

@@ -1,0 +1,119 @@
+body {
+    background: rgb(99, 39, 120)
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: #BA68C8
+}
+
+.profile-button {
+    background: rgb(99, 39, 120);
+    box-shadow: none;
+    border: none
+}
+
+.profile-button:hover {
+    background: #682773
+}
+
+.profile-button:focus {
+    background: #682773;
+    box-shadow: none
+}
+
+.profile-button:active {
+    background: #682773;
+    box-shadow: none
+}
+
+.back:hover {
+    color: #682773;
+    cursor: pointer
+}
+
+.labels {
+    font-size: 11px
+}
+
+.add-experience:hover {
+    background: #BA68C8;
+    color: #fff;
+    cursor: pointer;
+    border: solid 1px #BA68C8
+}
+
+/* search bar */
+.searchbar .form{
+    position: relative;
+    margin-top: 20pt;
+}
+
+.searchbar .form .bi-search{
+    position: absolute;
+    top: 8px;
+    left: 15px;
+    color: #9ca3af;
+}
+
+.searchbar .form span{
+  position: absolute;
+  right: 17px;
+  top: 13px;
+  padding: 2px;
+  border-left: 1px solid #d1d5db;
+}
+
+.searchbar .form-input{
+    height: 30px;
+    text-indent: 33px;
+    border-radius: 10px;
+    color: #9ca3af;
+}
+
+.searchbar .form-input:focus{
+    box-shadow: none;
+    border:none;
+}
+
+/* background */
+.container {
+  width: 100%;
+  margin-left: 10rem;
+  height: max-content;
+  background-color: rgba(222, 233, 236, 0.699);
+}
+
+/* user-info */
+.user-info {
+  margin-top: 100px;
+  float: left;
+}
+
+#button-edit {
+  margin-left: 40px;
+}
+
+.user-nav {
+  margin-top: 32px;
+  margin-left: 160px;
+}
+
+#colcard {
+  width: 40rem; 
+  height: 10rem;
+  margin-top: 22rem;
+  background-color: rgb(244, 244, 244);
+}
+
+#procard {
+  margin-top: 40px;
+  width: 16rem; 
+  background-color: rgb(244, 244, 244);
+  height: 30rem;
+}
+
+.icons {
+  margin-top: 30px;
+  color: rgba(103, 103, 103, 0.845);
+}
