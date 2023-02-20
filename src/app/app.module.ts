@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { BaseComponent } from './components/base/base.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { HomeComponent } from './components/home/home.component';
+import { MockComponentComponent } from './components/mock-component/mock-component.component';
 
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
@@ -23,7 +24,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AppComponent,
     BaseComponent,
     ProfileComponent,
-    HomeComponent
+    HomeComponent,
+    MockComponentComponent
   ],
   imports: [
     BrowserModule,

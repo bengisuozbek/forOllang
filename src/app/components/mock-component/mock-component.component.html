@@ -1,3 +1,4 @@
+<p>mock-component works!</p>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -315,16 +316,12 @@
           </p>
 
           <h2 style="display: inline;">{{ profileItem.firstName }} {{ profileItem.lastName }}</h2>
-
-          <button 
-                routerLink="/user/{{profileItem.id}}" 
-                type="button" 
-                id="button-edit" 
-                class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl 
-                focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800
-                font-normal rounded-full text-sm px-4 py-2 text-center mr-2 mb-2"> 
-                Edit Profile
-          </button>  
+          
+          <button type="button" id="button-edit" class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl 
+     focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800
+     font-normal rounded-full text-sm px-4 py-2 text-center mr-2 mb-2">
+            Edit Profile
+          </button>
           
           <button id="button-public" class="bg-gray-300 hover:bg-gray-600 text-gray-500 font-normal py-2 px-4 rounded-full"
             (click)="openPage('home')">
